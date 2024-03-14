@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Todo {
 	
 	@Column
 	@Nonnull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	
 	@Column
