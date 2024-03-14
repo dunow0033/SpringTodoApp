@@ -26,7 +26,7 @@ public class TodoController {
 		return "ViewTodoList";
 	}
 	
-	@PostMapping("/updateTodoStatus/{id}")
+	@GetMapping("/updateTodoStatus/{id}")
 	public String updateTodoStatus(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		if(service.updateStatus(id)) {
 			redirectAttributes.addFlashAttribute("message", "Update Success");
@@ -78,6 +78,7 @@ public class TodoController {
 	public String deleteTodoItem(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		if(service.deleteTodoItem(id)) {
 			redirectAttributes.addFlashAttribute("message", "Delete Success");
+			return "redirect:/viewTodoList";
 		}
 		
 		redirectAttributes.addFlashAttribute("message", "Delete Failure");
